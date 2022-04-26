@@ -117,7 +117,7 @@ class MoviePage extends Page {
 
     async verify404Images(title) {  
         await this.movieSearch(title);
-        await browser.pause(1000);
+        //await browser.pause(1000);
         const movieDivs = "//div[@class='movies']/div/div[1]"; 
         await $(movieDivs).waitForDisplayed({ timeout: 1000 });
         let arrImgDetails = []; 
@@ -139,7 +139,7 @@ class MoviePage extends Page {
     */
     async verifySearchCancel (title) {  
         await this.movieSearch(title);
-        await browser.pause(1000);
+        //await browser.pause(1000);
         await $("//input[@type='search']").waitForExist({ timeout: 1000 });
         await $("//input[@type='search']").click();
         //esc key to cancel -->  UI is using webkit which is can't be dealt with XPATH, thus workaround with sendKeys

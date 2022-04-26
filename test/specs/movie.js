@@ -69,7 +69,7 @@ describe('Movie functional regression tests', () => {
         for (const field of arrResult) {                     
             //console.log(field);  //- for debugging       
             expectChai(field).to.have.string('http://');
-            expectChai(field).to.have.string('.jpg');
+            expectChai(field).to.have.string('.jpg');  // Failing on this validation
         }
     });
 
