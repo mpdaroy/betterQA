@@ -1,25 +1,25 @@
 {
     "movietitle": [
-        "Dilwale Dulhania Le Jayenge", 
         "The Shawshank Redemption",
+        "Dilwale Dulhania Le Jayenge",
         "The Godfather",
-        "Your Eyes Tell",
+        "Impossible Things",
         "Schindler's List",
-        "Gabriel's Inferno Part II",
+        "Your Eyes Tell",
         "The Godfather: Part II",
-        "Gabriel's Inferno",
-        "Gabriel's Inferno Part III",
+        "Gabriel's Inferno: Part II",
+        "Violet Evergarden: The Movie",
         "Dou kyu sei – Classmates",
-        "Your Name.",
+        "Gabriel's Inferno",
+        "Josee, the Tiger and the Fish",
+        "Gabriel's Inferno: Part III",
         "Spirited Away",
-        "Hope",
-        "Given",
-        "Parasite",        
-        "Evangelion: 3.0+1.0 Thrice Upon a Time"  ,
+        "Your Name.",
+        "Parasite",
         "12 Angry Men",
         "The Green Mile",
         "The Dark Knight",
-        "A Dog's Will"
+        "Hope"
     ],
     "movieReleaseDate" : {
         "title": "The Shawshank Redemption",
@@ -29,8 +29,8 @@
     "movieDetails" : [
         "The Godfather",
         "1972-03-14",
-        "132.962",
+        "77.38",
         "8.7",
-        "15556"
+        "15859"
     ]
 }

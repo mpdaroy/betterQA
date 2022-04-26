@@ -1,4 +1,3 @@
-
 import Page from './page';
 
 
@@ -7,7 +6,7 @@ import Page from './page';
  */
 
 
-class LoginPage extends Page {
+class MoviePage extends Page {
   
     /**
      * a method to verify movie tiles with titles
@@ -18,7 +17,7 @@ class LoginPage extends Page {
         let arrTitles = [];     
         const arrDiv = await $$(movieTiles);   
         for (const elem of arrDiv) {
-            // console.log(await elem.getText()); //- for debugging
+            //console.log(await elem.getText()); //- for debugging
             arrTitles.push(await elem.getText())
         } 
         //console.log(arrTitles); //- for debugging
@@ -44,8 +43,8 @@ class LoginPage extends Page {
             //console.log("Title Here 2 " +  await title); //- for debugging
 
             if(txtTitle === title){
-                await elem.$$("div")[2].$("button").click();             
-                await browser.pause(1000);
+                await elem.$$("div")[2].$("button").click();
+                await $(releaseDate).waitForDisplayed({ timeout: 1000 });
                 relDate = await $(releaseDate).getAttribute('value');   
                 //console.log("Release Date " +  relDate);    //- for debugging          
                 break;
@@ -66,7 +65,12 @@ class LoginPage extends Page {
         
         await $(inputSearch).setValue(title);
         await browser.keys("Enter")
-        await browser.pause(1000);
+
+        if(title != null){
+            const searchDiv = await $("//div[@title='" + title +"']");
+            await searchDiv.waitForDisplayed({ timeout: 1000 });
+        }
+        
 
         const arrDiv = await $$(movieTiles);   
         for (const elem of arrDiv) {
@@ -94,8 +98,8 @@ class LoginPage extends Page {
             //console.log("Title Here 2 " +  await title); //- for debugging
 
             if(txtTitle === title){
-                await elem.$$("div")[2].$("button").click();             
-                await browser.pause(1000);
+                await elem.$$("div")[2].$("button").click();
+                await $("//div[@role='document']").waitForDisplayed({ timeout: 1000 });
 
                 for(let i = 2; i <=5; i++){
                     let releaseDate = "//div[@role='document']//div[" +  i + "]/div/input";  
@@ -115,6 +119,7 @@ class LoginPage extends Page {
         await this.movieSearch(title);
         await browser.pause(1000);
         const movieDivs = "//div[@class='movies']/div/div[1]"; 
+        await $(movieDivs).waitForDisplayed({ timeout: 1000 });
         let arrImgDetails = []; 
 
         const arrDiv = await $$(movieDivs);          
@@ -135,10 +140,11 @@ class LoginPage extends Page {
     async verifySearchCancel (title) {  
         await this.movieSearch(title);
         await browser.pause(1000);
+        await $("//input[@type='search']").waitForExist({ timeout: 1000 });
         await $("//input[@type='search']").click();
         //esc key to cancel -->  UI is using webkit which is can't be dealt with XPATH, thus workaround with sendKeys
         await browser.keys("Escape"); 
-        await browser.pause(2000);
+        await browser.pause(1000);
         await browser.keys("Enter");
         let arrCancel = await this.tiles(); // getting movie titles after cancelling to be compared to defaults
         // console.log(arrCancel);  // - for debugging
@@ -146,4 +152,4 @@ class LoginPage extends Page {
     }
 }
 
-export default new LoginPage();
+export default new MoviePage();
